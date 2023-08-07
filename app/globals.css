@@ -4,8 +4,6 @@
 
 :root {
   --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 80, 80, 80; 
-  --background-end-rgb: 80, 80, 80;  /* temp fix */
 }
 
 @media (prefers-color-scheme: dark) {
