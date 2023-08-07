@@ -12,6 +12,27 @@
   }
 }
 
+.logo-text {
+  font-size: 1.875rem /* 30px */;
+  line-height: 2.25rem /* 36px */;
+}
+.logo-small {
+  font-size: 1.5rem /* 24px */;
+  line-height: 2rem /* 32px */;
+}
+
+@media screen and (max-width: 768px) {
+  .logo-text {
+    font-size: 1.5rem /* 24px */;
+    line-height: 2rem /* 32px */;
+    justify-content: flex-start;
+  }
+  .logo-small {
+    font-size: 1.25rem /* 20px */;
+    line-height: 1.75rem; /* 28px */
+  }
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
