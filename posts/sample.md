@@ -43,11 +43,11 @@ _You **can** combine them_
 
 ## Images
 
-![This is an alt text.](../public/images/HuTaoLogo.png "This is a sample image.")
+![This is an alt text.](/images/HuTaoLogo.png "This is a sample image.")
 
 ## Links
 
-You may be using [Markdown Live Preview](https://markdownlivepreview.com/).
+I may used [Markdown Live Preview](https://markdownlivepreview.com/) for this post.
 
 ## Blockquotes
 
@@ -69,4 +69,3 @@ You may be using [Markdown Live Preview](https://markdownlivepreview.com/).
 let message = 'Hello world';
 alert(message);
 ```
-
