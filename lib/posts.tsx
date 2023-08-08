@@ -1,9 +1,14 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { remark } from "remark";
-import html from "remark-html";
 import remarkGfm from "remark-gfm";
+import remarkRehype from "remark-rehype/lib";
+import rehypeRaw from "rehype-raw";
+import { unified } from "unified";
+import remarkParse from "remark-parse";
+import rehypeDocument from "rehype-document";
+import rehypeFormat from "rehype-format";
+import rehypeStringify from "rehype-stringify";
 
 const postsDirectory = path.join(process.cwd(), "posts");
 
@@ -34,9 +39,14 @@ export async function getPostData(id: string) {
 
   const grayMatterResult = matter(fileContents);
 
-  const processedContent = await remark()
-    .use(html)
+  const processedContent = await unified()
+    .use(remarkParse)
     .use(remarkGfm, { singleTilde: false })
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeRaw)
+    .use(rehypeDocument, { title: grayMatterResult.data.title })
+    .use(rehypeFormat)
+    .use(rehypeStringify)
     .process(grayMatterResult.content);
 
   const contentHtml = processedContent.toString();
