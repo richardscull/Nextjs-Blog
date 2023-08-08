@@ -1,7 +1,6 @@
 import getFormattedDate from "@/lib/getFormattedDate";
 import { getPostData, getSortedPostsData } from "@/lib/posts";
 import { notFound } from "next/navigation";
-import Link from "next/link";
 
 export async function generateMetadata({
   params,
