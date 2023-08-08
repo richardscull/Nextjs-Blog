@@ -8,8 +8,6 @@ import {
   AiFillHome,
   AiOutlineMenu,
   AiOutlineMenuUnfold,
-  AiTwotoneCustomerService,
-  AiTwotoneTablet,
 } from "react-icons/ai";
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
