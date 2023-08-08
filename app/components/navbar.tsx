@@ -17,7 +17,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-neutral-800 p-3 sticky z-10">
+    <nav className="bg-neutral-800 p-3 sticky z-10 ">
       {/* Logo and text */}
       <div className="flex items-center mx-auto place-content-center logo-text">
         <link rel="icon" href="/favicon.ico" />
@@ -30,7 +30,7 @@ export default function Navbar() {
           />
         </div>
         <div className="">
-          <p className="font-bold tracking-tight">Richard&apos;s blog</p>
+          <p className="font-bold tracking-tight flex">Richard&apos;s blog</p>
           <p className="font-normal italic items-center logo-small ">
             by <a href="https://github.com/richardscull">richardscull</a>
           </p>
@@ -38,7 +38,7 @@ export default function Navbar() {
         {/* Mobile button */}
         <button
           onClick={handleNav}
-          className="block sm:hidden z-10 fixed justify-end right-5 text-3xl"
+          className="block sm:hidden z-10 justify-end right-5 text-3xl absolute top-10"
         >
           <AiOutlineMenu />
         </button>
