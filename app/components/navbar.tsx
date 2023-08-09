@@ -102,7 +102,7 @@ export default function Navbar() {
       </div>
       {/* Navigation buttons */}
       <div className="items-center mx-auto place-content-center hidden sm:flex">
-        <p className="font-bold items-center text-lg">
+        <p className="font-bold items-center text-lg text-center">
           <a href="/" className="mx-3">
             Main page
           </a>
