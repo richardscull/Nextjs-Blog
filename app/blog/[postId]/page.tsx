@@ -1,7 +1,7 @@
 import getFormattedDate from "@/lib/getFormattedDate";
 import { getPostData, getSortedPostsData } from "@/lib/posts";
 import { notFound } from "next/navigation";
-import ListDataItems from "../listDataItems";
+import ListDataItems from "../listByDateItems";
 
 export async function generateMetadata({
   params,
@@ -32,19 +32,18 @@ export default async function Post({ params }: { params: { postId: string } }) {
   const { title, date, tags, contentHtml } = await getPostData(postId);
 
   const pubDate = getFormattedDate(date);
+  
 
   return (
     <main className="flex justify-center items-center mx-auto m-auto mt-4 px-4 ">
-      <div className="flex ">
-        <div className="md:gap-0 mr-10 ">
-          <nav>
-            <ul className="text-1xl p-2 my-5 w-full">
-              <h1 className="text-1xl font-bold max-w-full">Posts by date</h1>
-              <ListDataItems posts={posts} />
-            </ul>
-          </nav>
+      <div className="flex">
+        <div className="md:gap-0 mr-5 hidden sm:flex">
+          <ListDataItems
+            posts={posts}
+            setOpenYear={new Date(date).getFullYear()}
+            setOpenMonth={new Date(date).getMonth()}
+          />
         </div>
-
         <div className="prose prose-lg prose-invert ">
           <div className="border-b-2 pb-12">
             <h1 className="text-4xl my-5">{title}</h1>
