@@ -17,7 +17,7 @@ export default function ListByDateItems({
     [setOpenYear]: true,
   });
   const [openMonths, setOpenMonths] = useState<{ [month: string]: boolean }>({
-    [`${setOpenYear}-${setOpenMonth+1}`]: true,
+    [`${setOpenYear}-${setOpenMonth + 1}`]: true,
   });
 
   const handleYearClick = (year: number) => {
@@ -47,7 +47,7 @@ export default function ListByDateItems({
 
           {PostsYears.map((year) => (
             <li key={year} className="mx-fit whitespace-normal text-right ">
-              <details className="group">
+              <details className="group" open={setOpenYear === year}>
                 <summary
                   className="flex items-center justify-between gap-2 p-1 font-medium marker:content-none hover:cursor-pointer"
                   onClick={() => handleYearClick(year)}
@@ -64,7 +64,7 @@ export default function ListByDateItems({
                       key={month}
                       className="-my-2 mx-fit whitespace-normal text-left"
                     >
-                      <details className="group">
+                      <details className="group" open={setOpenYear === year && setOpenMonth+1 === month}>
                         <summary
                           className="flex items-center justify-between p-2 font-medium marker:content-none hover:cursor-pointer"
                           onClick={() =>
