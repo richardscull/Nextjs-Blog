@@ -6,7 +6,6 @@ import {
   AiFillBook,
   AiFillExperiment,
   AiFillHome,
-  AiOutlineArrowRight,
   AiOutlineMenu,
   AiOutlineMenuUnfold,
 } from "react-icons/ai";
@@ -150,7 +149,7 @@ export default function Navbar() {
               onClick={handleBlog}
               className="block sm:hidden fixed justify-end right-2 text-3xl mx-1"
             >
-              <AiOutlineArrowRight />
+              <span className="mdi mdi-arrow-u-left-bottom"></span>
             </button>
           </div>
 
