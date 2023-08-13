@@ -9,6 +9,7 @@ import {
   AiOutlineMenu,
   AiOutlineMenuUnfold,
 } from "react-icons/ai";
+import ListByDateMobile from "../blog/listByDateMobile";
 
 type Post = {
   title: string;
@@ -47,6 +48,7 @@ export default function Navbar() {
   return (
     <nav className="bg-neutral-800 p-3 sticky z-10 ">
       {/* Logo and text */}
+
       <div className="flex items-center mx-auto place-content-center logo-text">
         <link rel="icon" href="/favicon.ico" />
         <div className="mx-3">
@@ -63,7 +65,9 @@ export default function Navbar() {
             by <a href="https://github.com/richardscull">richardscull</a>
           </p>
         </div>
+
         {/* Mobile button */}
+
         <button
           onClick={handleNav}
           className="block sm:hidden z-10 justify-end right-5 text-3xl absolute top-10"
@@ -76,7 +80,9 @@ export default function Navbar() {
             onClick={closeAllNav}
           ></div>
         )}
+
         {/* Mobile nav menu */}
+
         <div
           className={`transform transition-transform duration-300 sm:hidden ${
             isMenuOpen ? "translate-x-none" : "translate-x-full"
@@ -129,7 +135,9 @@ export default function Navbar() {
             </li>
           </ul>
         </div>
+
         {/* Mobile blog menu */}
+
         <div
           className={`transform transition-transform duration-300 sm:hidden ${
             isBlogOpen ? "translate-x-none" : "translate-x-full"
@@ -152,22 +160,12 @@ export default function Navbar() {
               <span className="mdi mdi-arrow-u-left-bottom"></span>
             </button>
           </div>
-
-          <ul className="p-4 mx-auto">
-            {/* TODO: Make nested lists by date  */}
-            {posts.map((post) => (
-              <li key={post.id} onClick={closeAllNav}>
-                <Link href={`/blog/${post.id}`} className="text-xl flex ">
-                  <span className="mdi mdi-chevron-right"></span>
-
-                  {post.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <ListByDateMobile posts={posts} closeAllNav={closeAllNav} />
         </div>
       </div>
+
       {/* Full screen Navigation labels */}
+
       <div className="items-center mx-auto place-content-center hidden sm:flex">
         <p className="font-bold items-center text-lg text-center">
           <a href="/" className="mx-3">
