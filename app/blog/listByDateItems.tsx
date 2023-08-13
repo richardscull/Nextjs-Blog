@@ -100,7 +100,7 @@ export default function ListByDateItems({
   );
 }
 
-function monthName(month: number): string {
+export function monthName(month: number): string {
   const getMonth = new Date(`2000-${month}-${month}`).toLocaleDateString(
     "ru-RU",
     {
@@ -110,7 +110,7 @@ function monthName(month: number): string {
   return getMonth.charAt(0).toUpperCase() + getMonth.slice(1);
 }
 
-function getYearsMonths(year: number, posts: Blogpost[]) {
+export function getYearsMonths(year: number, posts: Blogpost[]) {
   const PostsMonths = posts
     .filter((post) => new Date(post.date).getFullYear() === year)
     .map((post) => new Date(post.date).getMonth() + 1)
@@ -120,7 +120,7 @@ function getYearsMonths(year: number, posts: Blogpost[]) {
   return PostsMonths;
 }
 
-function getMonthsPosts(year: number, month: number, posts: Blogpost[]) {
+export function getMonthsPosts(year: number, month: number, posts: Blogpost[]) {
   const PostsMonths = posts
     .filter((post) => new Date(post.date).getFullYear() === year)
     .filter((post) => new Date(post.date).getMonth() === month - 1)
