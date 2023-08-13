@@ -48,17 +48,20 @@ export default function Navbar() {
     <nav className="bg-neutral-800 p-3 sticky z-10 ">
       {/* Logo and text */}
       <div className="flex items-center mx-auto place-content-center logo-text">
-        <link rel="icon" href="/favicon.ico" />
         <div className="mx-3">
-          <Image
-            src="/images/HuTaoLogo.png"
-            alt="logo"
-            width={90}
-            height={90}
-          />
+          <Link href="/">
+            <Image
+              src="/images/HuTaoLogo.png"
+              alt="logo"
+              width={90}
+              height={90}
+            />
+          </Link>
         </div>
-        <div className="">
-          <p className="font-bold tracking-tight flex">Richard&apos;s blog</p>
+        <div>
+          <a href="/" className="font-bold tracking-tight flex">
+            Richard&apos;s blog
+          </a>
           <p className="font-normal italic items-center logo-small ">
             by <a href="https://github.com/richardscull">richardscull</a>
           </p>
