@@ -45,7 +45,7 @@ export async function getPostData(id: string) {
     .use(remarkGfm, { singleTilde: false })
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw)
-    .use(shiki, { theme: "./public/dark-plus.json" })
+    .use(shiki, { theme: "/dark-plus.json" })
     .use(rehypeDocument, { title: grayMatterResult.data.title })
     .use(rehypeFormat)
     .use(rehypeStringify, { allowDangerousHtml: true })
