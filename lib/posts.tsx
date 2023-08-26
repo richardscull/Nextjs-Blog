@@ -9,6 +9,7 @@ import remarkParse from "remark-parse";
 import rehypeDocument from "rehype-document";
 import rehypeFormat from "rehype-format";
 import rehypeStringify from "rehype-stringify";
+import rehypeHighlight from "rehype-highlight";
 
 const postsDirectory = path.join(process.cwd(), "posts");
 const publicDirectory = path.join(process.cwd(), "public");
@@ -46,6 +47,7 @@ export async function getPostData(id: string) {
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw)
     .use(rehypeDocument, { title: grayMatterResult.data.title })
+    .use(rehypeHighlight)
     .use(rehypeFormat)
     .use(rehypeStringify, { allowDangerousHtml: true })
     .process(grayMatterResult.content);
