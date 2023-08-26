@@ -9,7 +9,6 @@ import remarkParse from "remark-parse";
 import rehypeDocument from "rehype-document";
 import rehypeFormat from "rehype-format";
 import rehypeStringify from "rehype-stringify";
-const shiki = require("rehype-shiki");
 
 const postsDirectory = path.join(process.cwd(), "posts");
 const publicDirectory = path.join(process.cwd(), "public");
