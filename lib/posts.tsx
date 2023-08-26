@@ -12,6 +12,7 @@ import rehypeStringify from "rehype-stringify";
 const shiki = require("rehype-shiki");
 
 const postsDirectory = path.join(process.cwd(), "posts");
+const publicDirectory = path.join(process.cwd(), "public");
 
 export function getSortedPostsData() {
   const filesNames = fs.readdirSync(postsDirectory);
@@ -45,7 +46,7 @@ export async function getPostData(id: string) {
     .use(remarkGfm, { singleTilde: false })
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw)
-    .use(shiki, { theme: "/dark-plus.json" })
+    .use(shiki, { theme: path.join(publicDirectory, "dark-plus.json") })
     .use(rehypeDocument, { title: grayMatterResult.data.title })
     .use(rehypeFormat)
     .use(rehypeStringify, { allowDangerousHtml: true })
