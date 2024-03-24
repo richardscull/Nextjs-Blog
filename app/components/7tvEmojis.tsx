@@ -24,9 +24,10 @@ async function replaceText(setId: string) {
   const elements = Array.from(
     document.querySelectorAll("*:not(script):not(style)")
   );
-  const emojis = (await fetch("https://7tv.io/v3/emote-sets/" + setId)
-    .then((res) => res.json())
-    .then((data) => data.emotes)) as Emoji[];
+
+  const emojis = (await fetch("./api/getEmojis?setId=" + setId, {
+    cache: "force-cache",
+  }).then((res) => res.json())) as Emoji[];
 
   elements.forEach((element) => {
     if (element.childElementCount > 0) {
@@ -38,6 +39,7 @@ async function replaceText(setId: string) {
           const word = words[i];
           const emoji = emojis.find((emoji) => emoji.name === word);
           if (!emoji) continue;
+          console.log(`Replaced ${word} with parent ${element.tagName}`);
           words[i] = getEmojiElement(emoji);
         }
 
@@ -45,6 +47,7 @@ async function replaceText(setId: string) {
         spanElement.innerHTML = words.join(" ");
 
         // Replace the original text node with the new span element
+
         element.replaceChild(spanElement, child);
       });
 
@@ -59,6 +62,8 @@ async function replaceText(setId: string) {
       case "STYLE":
         return;
     }
+
+    if (element.id === "ignore-7tv") return;
 
     const words = element.innerHTML.split(" ");
     for (let i = 0; i < words.length; i++) {
