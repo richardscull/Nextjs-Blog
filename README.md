@@ -16,7 +16,6 @@ git clone -b template https://github.com/richardscull/Richards-Blog
 cd Richards-Blog
 npm install
 ```
-###### ⚠️ The `main` branch contains posts from my blog. For the best experience, I highly recommend cloning the `template` branch.
 
 After that, you can sucesfully run the site on your local network by typing:
 ```shell
