@@ -37,8 +37,43 @@ export default function ListByDateItems({
     .map((post) => new Date(post.date).getFullYear())
     .filter((year, index, self) => self.indexOf(year) === index);
 
-  // https://upload.wikimedia.org/wikipedia/commons/6/62/Thomas_C._Lea_III_-_That_Two-Thousand_Yard_Stare_-_Original.jpg
-  // I will try to refactor this shit someday
+  function MapYearWithMonths(year: number) {
+    return (
+      <ul className="block">
+        {getYearsMonths(year, posts).map((month) => (
+          <li key={month} className="-my-2 mx-fit whitespace-normal text-left">
+            <details
+              className="group"
+              open={setOpenYear === year && setOpenMonth + 1 === month}
+            >
+              <summary
+                className="flex items-center justify-between p-2 font-medium marker:content-none hover:cursor-pointer"
+                onClick={() => handleMonthClick(year, month.toString())}
+              >
+                <h1 className="mx-2">{monthName(month)}</h1>
+                <span className="-mx-1 mdi mdi-chevron-right justify-center ml-32 transition group-open:rotate-90"></span>
+              </summary>
+            </details>
+            {openMonths[`${year}-${month}`] && MapPostsForMonths(year, month)}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
+  function MapPostsForMonths(year: number, month: number) {
+    return (
+      <article className="px-4 pb-2 -py-2">
+        <ul className="flex flex-col gap-1 pl-2">
+          {getMonthsPosts(year, month, posts).map((post) => (
+            <li key={post.id}>
+              <Link href={`/blog/${post.id}`}>{post.title}</Link>
+            </li>
+          ))}
+        </ul>
+      </article>
+    );
+  }
 
   return (
     <>
@@ -60,46 +95,7 @@ export default function ListByDateItems({
                 </summary>
               </details>
 
-              {openYears[year] && (
-                <ul className="block">
-                  {getYearsMonths(year, posts).map((month) => (
-                    <li
-                      key={month}
-                      className="-my-2 mx-fit whitespace-normal text-left"
-                    >
-                      <details
-                        className="group"
-                        open={
-                          setOpenYear === year && setOpenMonth + 1 === month
-                        }
-                      >
-                        <summary
-                          className="flex items-center justify-between p-2 font-medium marker:content-none hover:cursor-pointer"
-                          onClick={() =>
-                            handleMonthClick(year, month.toString())
-                          }
-                        >
-                          <h1 className="mx-2">{monthName(month)}</h1>
-                          <span className="-mx-1 mdi mdi-chevron-right justify-center ml-32 transition group-open:rotate-90"></span>
-                        </summary>
-                      </details>
-                      {openMonths[`${year}-${month}`] && (
-                        <article className="px-4 pb-2 -py-2">
-                          <ul className="flex flex-col gap-1 pl-2">
-                            {getMonthsPosts(year, month, posts).map((post) => (
-                              <li key={post.id}>
-                                <Link href={`/blog/${post.id}`}>
-                                  {post.title}
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        </article>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              )}
+              {openYears[year] && MapYearWithMonths(year)}
             </li>
           ))}
         </ul>
@@ -110,7 +106,8 @@ export default function ListByDateItems({
 
 export function monthName(month: number): string {
   const getMonth = new Date(`2000-${month}-${month}`).toLocaleDateString(
-    "ru-RU",
+    "en-US",
+
     {
       month: "long",
     }

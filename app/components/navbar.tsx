@@ -62,7 +62,7 @@ export default function Navbar() {
         </div>
         <div>
           <a href="/" className="font-bold tracking-tight flex">
-            Richard&apos;s blog
+            Nextjs blog
           </a>
           <p className="font-normal italic items-center logo-small ">
             by <a href="https://github.com/richardscull">richardscull</a>

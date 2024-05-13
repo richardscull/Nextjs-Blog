@@ -9,8 +9,8 @@ import Copyright from "@/app/components/copyright";
 export const font = Source_Sans_3({ weight: "400", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Richard's blog",
-  description: "Funny blog about funny things",
+  title: "Next.js Blog Starter",
+  description: "A starter template for building a blog with Next.js",
   creator: "richardscull",
   openGraph: {
     images: [
