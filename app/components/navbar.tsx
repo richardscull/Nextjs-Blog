@@ -46,7 +46,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="bg-neutral-800 p-3 sticky z-10 ">
+    <nav className="bg-[#151515] p-3 sticky z-10 ">
       {/* Logo and text */}
 
       <div className="flex items-center mx-auto place-content-center logo-text">
@@ -62,7 +62,7 @@ export default function Navbar() {
         </div>
         <div>
           <a href="/" className="font-bold tracking-tight flex">
-            Richard&apos;s blog
+            Nextjs blog
           </a>
           <p className="font-normal italic items-center logo-small ">
             by <a href="https://github.com/richardscull">richardscull</a>

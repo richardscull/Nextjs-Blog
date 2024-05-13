@@ -12,7 +12,6 @@ import rehypeStringify from "rehype-stringify";
 import rehypeHighlight from "rehype-highlight";
 
 const postsDirectory = path.join(process.cwd(), "posts");
-const publicDirectory = path.join(process.cwd(), "public");
 
 export function getSortedPostsData() {
   const filesNames = fs.readdirSync(postsDirectory);
@@ -59,6 +58,7 @@ export async function getPostData(id: string) {
     title: grayMatterResult.data.title,
     tags: grayMatterResult.data.tags,
     date: grayMatterResult.data.date,
+    raw: fileContents,
     contentHtml,
-  } as Blogpost & { contentHtml: string };
+  } as Blogpost & { contentHtml: string; raw: string };
 }
